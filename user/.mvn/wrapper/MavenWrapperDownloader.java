@@ -110,8 +110,4 @@ public class MavenWrapperDownloader {
         fos.close();
         rbc.close();
     }
-
-    public static void main(String[] args) {
-
-    }
 }
