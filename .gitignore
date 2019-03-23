@@ -23,7 +23,4 @@
 hs_err_pid*
 
 .DS_Store
-/*.idea
-.mvn/
-mvnw
-mvnw.cmd
+.idea/
