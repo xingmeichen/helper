@@ -111,4 +111,7 @@ public class MavenWrapperDownloader {
         rbc.close();
     }
 
+    public static void main(String[] args) {
+
+    }
 }

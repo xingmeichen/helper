@@ -4,6 +4,9 @@ import com.mabel.pojo.model.User;
 import com.mabel.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @project: helper
  * @description:
@@ -16,5 +19,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User queryUserByNickname(String nickname) {
         return new User();
+    }
+
+    @Override
+    public List<User> listUser() {
+        return new ArrayList<>();
     }
 }
