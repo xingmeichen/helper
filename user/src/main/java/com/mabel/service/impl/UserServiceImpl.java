@@ -1,8 +1,12 @@
 package com.mabel.service.impl;
 
+import com.mabel.mapper.UserMapper;
 import com.mabel.pojo.model.User;
 import com.mabel.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +20,18 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
+    private UserMapper userMapper;
+
     @Override
     public User queryUserByNickname(String nickname) {
-        return new User();
+        Example example = new Example(User.class);
+        example.createCriteria().andEqualTo("nickname", nickname);
+        List<User> users = userMapper.selectByExample(example);
+        if (CollectionUtils.isEmpty(users)) {
+            return new User();
+        }
+        return users.get(0);
     }
 
     @Override

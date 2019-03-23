@@ -5,18 +5,15 @@ spring:
     password: 20190228
     driver-class-name: com.mysql.jdbc.Driver
   application:
-    name: user
+    name: registry
 
 server:
-  port: 8081
+  port: 8080
 
 eureka:
+  enableSelfPreservation: true
   client:
+    register-with-eureka: false
+    fetch-register: false
     serviceUrl:
-      defaultZone: http://localhost:8080/eureka/
-
-
-mybatis:
-  configLcation: classpath:mybatis.xml
-  type-aliases-package: com.mabel.pojo
-  mapperLacation: classpath:mapper
+      defaultZone: http://localhost:${server.port}/eureka/
