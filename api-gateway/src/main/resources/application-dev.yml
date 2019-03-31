@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka/
+
+#zuul:
+#  routes:
+#    user:
+#      url: http://localhost:8081
+
+zuul:
+  set-content-length: true
+  routes:
+    registry:
+      path: /registry/**
+      url: http://localhost:8080
+    user:
+      path: /user/**
+      serviceId: user  # serviceId 也可以用url代替
+    admin:
+      path: /admin/**
+      serviceId: admin
+
+  max:
+    host:
+      connection: 200
+      socket-timeout-millis: 60000
+      connect-timeout-millis: 60000
+
+ribbon:
+  Connectiontimeout: 60000
+  Readtimeout: 60000
+  eureka:
+    enabled: true
+#ribbon:
+#  eureka:
+#    enabled: true
+
+
+
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 10000
