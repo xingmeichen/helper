@@ -24,7 +24,7 @@ public class ResponseEntity {
 
     public static ResponseEntity success() {
         ResponseEntity responseEntity = new ResponseEntity();
-        responseEntity.setMessage("").setErrorCode(0).setSuccess(false);
+        responseEntity.setMessage("").setErrorCode(0).setSuccess(true);
         return responseEntity;
     }
 

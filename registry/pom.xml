@@ -10,12 +10,13 @@
 	</parent>
 	<groupId>com.mabel</groupId>
 	<artifactId>registry</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>registry</name>
 	<description>Registry project for Spring Boot</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<project.MainClass>com.mabel.RegistryApplication</project.MainClass>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring-cloud.version>Greenwich.SR1</spring-cloud.version>
 	</properties>
 

@@ -3,12 +3,15 @@ spring:
     name: api-gateway
 
 server:
-  port: 8082
+  port: 8081
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8080/eureka/
+
+#swagger:
+#  base-package: com.mabel.controller
 
 #zuul:
 #  routes:
@@ -17,6 +20,7 @@ eureka:
 
 zuul:
   set-content-length: true
+  ignoredServices: "*"   # 表示允许所有请求直接转发，不需要通过任何验证
   routes:
     registry:
       path: /registry/**
@@ -38,17 +42,16 @@ ribbon:
   Connectiontimeout: 60000
   Readtimeout: 60000
   eureka:
-    enabled: true
+    enabled: false
+
 #ribbon:
 #  eureka:
 #    enabled: true
 
-
-
-#hystrix:
-#  command:
-#    default:
-#      execution:
-#        isolation:
-#          thread:
-#            timeoutInMilliseconds: 10000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 100000

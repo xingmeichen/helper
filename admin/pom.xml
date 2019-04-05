@@ -10,12 +10,12 @@
 	</parent>
 	<groupId>com.mabel</groupId>
 	<artifactId>admin</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>admin</name>
 	<description>Admin project for Spring Boot</description>
 
 	<properties>
-		<project.MailClass>com.mabel.UserApplication</project.MailClass>
+		<project.MainClass>com.mabel.AdminApplication</project.MainClass>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring-cloud.version>Greenwich.SR1</spring-cloud.version>
 	</properties>

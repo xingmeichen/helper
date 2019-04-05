@@ -10,14 +10,14 @@
 	</parent>
 	<groupId>com.mabel</groupId>
 	<artifactId>api-gateway</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>api-gateway</name>
 	<description>Api-gateway project for Spring Boot</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<project.MainClass>com.mabel.ApiGatewayApplication</project.MainClass>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring-cloud.version>Greenwich.SR1</spring-cloud.version>
-		<project.mainClass>com.mabel.Ap</project.mainClass>
 	</properties>
 
 	<dependencies>
@@ -25,7 +25,14 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

@@ -8,7 +8,7 @@ spring:
     name: user
 
 server:
-  port: 8081
+  port: 8082
 
 eureka:
   client:
@@ -19,12 +19,7 @@ ribbon:
   Connectiontimeout: 60000
   Readtimeout: 60000
   eureka:
-    enabled: true
-#ribbon:
-#  eureka:
-#    enabled: true
-
-
+    enabled: false
 
 mybatis:
   configLcation: classpath:mybatis.xml
