@@ -1,5 +1,6 @@
 package com.mabel.pojo.vo;
 
+import com.mabel.pojo.model.HelperError;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -31,6 +32,14 @@ public class ResponseEntity {
     public static ResponseEntity fail() {
         ResponseEntity responseEntity = new ResponseEntity();
         responseEntity.setMessage("系统错误").setErrorCode(110110).setSuccess(false);
+        return responseEntity;
+    }
+
+    public static ResponseEntity fail(Integer errorCode) {
+        ResponseEntity responseEntity = new ResponseEntity();
+        HelperError helperError = HelperError.getEnumByCode(errorCode);
+        responseEntity.setErrorCode(helperError.getCode())
+                .setMessage(helperError.getName());
         return responseEntity;
     }
 }

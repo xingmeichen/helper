@@ -1,13 +1,11 @@
 package com.mabel.controller;
 
-import com.alibaba.fastjson.JSONObject;
-import com.mabel.pojo.model.User;
+import com.mabel.pojo.form.user.LoginForm;
+import com.mabel.pojo.model.user.User;
 import com.mabel.pojo.vo.ResponseEntity;
 import com.mabel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -17,11 +15,20 @@ public class UserController {
 
     @GetMapping("/v1/users")
     public ResponseEntity queryUserByNickName(@RequestParam String nickname) {
-        User user = userServiceImpl.queryUserByNickname(nickname);
+        User user = userServiceImpl.queryUserByUserName(nickname);
         ResponseEntity responseEntity = ResponseEntity.success();
         responseEntity.setData(user);
-        String jsonString = JSONObject.toJSONString(user);
-        System.out.println(jsonString);
+        return responseEntity;
+    }
+
+    @PostMapping("/v1/users/register")
+    public ResponseEntity register(@RequestBody LoginForm loginForm) {
+        ResponseEntity responseEntity = ResponseEntity.success();
+        Integer result = userServiceImpl.register(loginForm);
+        if (null == result || result.compareTo(0) < 0) {
+            responseEntity = ResponseEntity.fail(result);
+            return responseEntity;
+        }
         return responseEntity;
     }
 }

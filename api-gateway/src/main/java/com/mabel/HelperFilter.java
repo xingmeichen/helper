@@ -36,6 +36,8 @@ public class HelperFilter extends ZuulFilter {
 //        } catch (IOException e) {
 //            return null;
 //        }
+        context.setSendZuulResponse(true);
+        context.setResponseStatusCode(HttpStatus.OK.value());
         return null;
     }
 
@@ -56,7 +58,7 @@ public class HelperFilter extends ZuulFilter {
 
     public boolean notFilter(HttpServletRequest request) {
         String requestURI = request.getRequestURI();
-        if (requestURI.endsWith("v2/api-docs")) {
+        if (requestURI.endsWith("/v2/api-docs")) {
             return true;
         }
         return false;

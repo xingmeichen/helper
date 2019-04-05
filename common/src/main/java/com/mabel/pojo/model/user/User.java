@@ -1,4 +1,4 @@
-package com.mabel.pojo.model;
+package com.mabel.pojo.model.user;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +18,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nickname;
+    private String userName;
     private String name;
     private String email;
     private String phone;

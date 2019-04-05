@@ -1,12 +1,14 @@
 package com.mabel.service.impl;
 
-import com.mabel.mapper.UserMapper;
-import com.mabel.pojo.model.User;
+import com.mabel.dao.UserDao;
+import com.mabel.pojo.form.user.LoginForm;
+import com.mabel.pojo.model.HelperError;
+import com.mabel.pojo.model.user.User;
 import com.mabel.service.UserService;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-import tk.mybatis.mapper.entity.Example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,17 +23,26 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserMapper userMapper;
+    private UserDao userDao;
 
     @Override
-    public User queryUserByNickname(String nickname) {
-        Example example = new Example(User.class);
-        example.createCriteria().andEqualTo("nickname", nickname);
-        List<User> users = userMapper.selectByExample(example);
-        if (CollectionUtils.isEmpty(users)) {
-            return new User();
+    public User queryUserByUserName(String userName) {
+        return userDao.queryByUserName(userName);
+    }
+
+    @Override
+    public Integer register(LoginForm loginForm) {
+        User existUser = this.queryUserByUserName(loginForm.getUserName());
+        if (StringUtils.isNotBlank(existUser.getUserName())) {
+            return HelperError.DUPLICATE_USER_NAME_ERROR.getCode();
         }
-        return users.get(0);
+        User user = new User();
+        BeanUtils.copyProperties(loginForm, user);
+        Integer userId = userDao.addUser(user);
+        if (null == userId || Integer.valueOf(0).equals(userId)) {
+            return HelperError.SYSTEM_ERROR.getCode();
+        }
+        return userId;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.mabel.mapper;
 
-import com.mabel.pojo.model.User;
+import com.mabel.pojo.model.user.User;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.common.Mapper;
 
