@@ -16,7 +16,7 @@ import java.util.List;
  **/
 @Component
 @Primary
-public class DocumenttationConfig implements SwaggerResourcesProvider {
+public class DocumentationConfig implements SwaggerResourcesProvider {
 
     @Override
     public List<SwaggerResource> get() {

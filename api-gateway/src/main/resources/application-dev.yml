@@ -20,7 +20,7 @@ eureka:
 
 zuul:
   set-content-length: true
-  ignoredServices: "*"   # 表示允许所有请求直接转发，不需要通过任何验证
+#  ignoredServices: "*"   # 表示允许所有请求直接转发，不需要通过任何验证
   routes:
     registry:
       path: /registry/**
