@@ -21,6 +21,7 @@ ribbon:
   eureka:
     enabled: true
 
+
 mybatis:
   configLcation: classpath:mybatis.xml
   type-aliases-package: com.mabel.pojo

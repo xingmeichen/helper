@@ -1,5 +1,6 @@
 package com.mabel.controller;
 
+import com.mabel.pojo.dto.UserDTO;
 import com.mabel.pojo.form.user.LoginForm;
 import com.mabel.pojo.model.user.User;
 import com.mabel.pojo.vo.ResponseEntity;
@@ -15,9 +16,9 @@ public class UserController {
 
     @GetMapping("/v1/users")
     public ResponseEntity queryUserByNickName(@RequestParam String nickname) {
-        User user = userServiceImpl.queryUserByUserName(nickname);
+        UserDTO userDTO = userServiceImpl.queryUserByUserName(nickname);
         ResponseEntity responseEntity = ResponseEntity.success();
-        responseEntity.setData(user);
+        responseEntity.setData(userDTO);
         return responseEntity;
     }
 
@@ -29,6 +30,14 @@ public class UserController {
             responseEntity = ResponseEntity.fail(result);
             return responseEntity;
         }
+        return responseEntity;
+    }
+
+    @PostMapping("/v1/users/login")
+    public ResponseEntity login(@RequestParam String loginSignature, @RequestParam String password) {
+        String token = userServiceImpl.login(loginSignature, password);
+        ResponseEntity responseEntity = ResponseEntity.success();
+        responseEntity.setData(token);
         return responseEntity;
     }
 }

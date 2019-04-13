@@ -25,13 +25,13 @@ public class ResponseEntity {
 
     public static ResponseEntity success() {
         ResponseEntity responseEntity = new ResponseEntity();
-        responseEntity.setMessage("").setErrorCode(0).setSuccess(true);
+        responseEntity.setMessage("success").setErrorCode(0).setSuccess(true);
         return responseEntity;
     }
 
     public static ResponseEntity fail() {
         ResponseEntity responseEntity = new ResponseEntity();
-        responseEntity.setMessage("系统错误").setErrorCode(110110).setSuccess(false);
+        responseEntity.setMessage("系统错误").setErrorCode(-1).setSuccess(false);
         return responseEntity;
     }
 

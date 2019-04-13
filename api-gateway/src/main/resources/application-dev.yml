@@ -39,8 +39,8 @@ zuul:
       connect-timeout-millis: 60000
 
 ribbon:
-  Connectiontimeout: 150000
-  Readtimeout: 150000
+  Connectiontimeout: 60000
+  Readtimeout: 60000
   eureka:
     enabled: true
 
@@ -54,4 +54,4 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 150000
+            timeoutInMilliseconds: 60000

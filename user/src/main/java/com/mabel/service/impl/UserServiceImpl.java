@@ -1,17 +1,15 @@
 package com.mabel.service.impl;
 
 import com.mabel.dao.UserDao;
+import com.mabel.pojo.dto.UserDTO;
 import com.mabel.pojo.form.user.LoginForm;
 import com.mabel.pojo.model.HelperError;
 import com.mabel.pojo.model.user.User;
 import com.mabel.service.UserService;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @project: helper
@@ -26,13 +24,17 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public User queryUserByUserName(String userName) {
-        return userDao.queryByUserName(userName);
+    public UserDTO queryUserByUserName(String userName) {
+        User user = userDao.queryByUserName(userName);
+        UserDTO userDTO = new UserDTO();
+        BeanUtils.copyProperties(user, userDTO);
+        userDTO.setUserId(user.getId());
+        return userDTO;
     }
 
     @Override
     public Integer register(LoginForm loginForm) {
-        User existUser = this.queryUserByUserName(loginForm.getUserName());
+        User existUser = userDao.queryByUserName(loginForm.getUserName());
         if (StringUtils.isNotBlank(existUser.getUserName())) {
             return HelperError.DUPLICATE_USER_NAME_ERROR.getCode();
         }
@@ -46,7 +48,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> listUser() {
-        return new ArrayList<>();
+    public String login(String loginSignature, String password) {
+        User user = userDao.queryBySignature(loginSignature);
+        if (null == user.getId()) {
+            return HelperError.SIGNATURE_PASSWORD_ERROE.getName();
+        }
+        if (!LoginForm.checkPassword(password, user.getPassword())) {
+            return HelperError.SIGNATURE_PASSWORD_ERROE.getName();
+        }
+        return LoginForm.generateToken(user.getId());
     }
 }

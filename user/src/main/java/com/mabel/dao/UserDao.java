@@ -38,4 +38,16 @@ public class UserDao {
         userMapper.insertSelective(user);
         return user.getId();
     }
+
+    public User queryBySignature(String signature) {
+        Example example = new Example(User.class);
+        example.createCriteria().orEqualTo("userName", signature)
+                .orEqualTo("name", signature)
+                .orEqualTo("phone", signature);
+        List<User> users = userMapper.selectByExample(example);
+        if (CollectionUtils.isEmpty(users)) {
+            return new User();
+        }
+        return users.get(0);
+    }
 }
