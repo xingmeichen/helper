@@ -14,4 +14,6 @@ public interface UserService {
      * loginSignature can be userName, name and phone
      * */
     ResponseEntity login(String loginSignature, String password);
+
+    boolean updatePassword(LoginForm loginForm);
 }

@@ -2,7 +2,6 @@ package com.mabel.controller;
 
 import com.mabel.pojo.dto.UserDTO;
 import com.mabel.pojo.form.user.LoginForm;
-import com.mabel.pojo.model.user.User;
 import com.mabel.pojo.vo.ResponseEntity;
 import com.mabel.service.UserService;
 import org.slf4j.Logger;
@@ -41,5 +40,14 @@ public class UserController {
     @PostMapping("/v1/users/login")
     public ResponseEntity login(@RequestParam String loginSignature, @RequestParam String password) {
         return userServiceImpl.login(loginSignature, password);
+    }
+
+    @PutMapping("/v1/users/password")
+    public ResponseEntity updatePassword(@RequestBody LoginForm loginForm) {
+        boolean result = userServiceImpl.updatePassword(loginForm);
+        if (result) {
+            return ResponseEntity.success();
+        }
+        return ResponseEntity.fail();
     }
 }

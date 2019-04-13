@@ -50,4 +50,10 @@ public class UserDao {
         }
         return users.get(0);
     }
+
+    public boolean updatePasswordById(Integer userId, String encryptPassword) {
+        User user = new User();
+        user.setId(userId).setPassword(encryptPassword);
+        return userMapper.updateByPrimaryKeySelective(user) > 0;
+    }
 }

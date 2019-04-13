@@ -61,4 +61,14 @@ public class UserServiceImpl implements UserService {
         }
         return ResponseEntity.success(LoginForm.generateToken(user.getId()));
     }
+
+    @Override
+    public boolean updatePassword(LoginForm loginForm) {
+        User user = userDao.queryByUserName(loginForm.getUserName());
+        if (null == user.getId()) {
+            return false;
+        }
+        String encryptPassword = LoginForm.encryptPassword(loginForm.getPassword());
+        return userDao.updatePasswordById(user.getId(), encryptPassword);
+    }
 }
