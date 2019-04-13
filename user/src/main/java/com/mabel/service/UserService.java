@@ -2,9 +2,7 @@ package com.mabel.service;
 
 import com.mabel.pojo.dto.UserDTO;
 import com.mabel.pojo.form.user.LoginForm;
-import com.mabel.pojo.model.user.User;
-
-import java.util.List;
+import com.mabel.pojo.vo.ResponseEntity;
 
 public interface UserService {
 
@@ -15,5 +13,5 @@ public interface UserService {
     /**
      * loginSignature can be userName, name and phone
      * */
-    String login(String loginSignature, String password);
+    ResponseEntity login(String loginSignature, String password);
 }

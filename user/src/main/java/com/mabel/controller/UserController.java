@@ -5,17 +5,22 @@ import com.mabel.pojo.form.user.LoginForm;
 import com.mabel.pojo.model.user.User;
 import com.mabel.pojo.vo.ResponseEntity;
 import com.mabel.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private UserService userServiceImpl;
 
     @GetMapping("/v1/users")
     public ResponseEntity queryUserByNickName(@RequestParam String nickname) {
+        LOGGER.info(nickname);
         UserDTO userDTO = userServiceImpl.queryUserByUserName(nickname);
         ResponseEntity responseEntity = ResponseEntity.success();
         responseEntity.setData(userDTO);
@@ -35,9 +40,6 @@ public class UserController {
 
     @PostMapping("/v1/users/login")
     public ResponseEntity login(@RequestParam String loginSignature, @RequestParam String password) {
-        String token = userServiceImpl.login(loginSignature, password);
-        ResponseEntity responseEntity = ResponseEntity.success();
-        responseEntity.setData(token);
-        return responseEntity;
+        return userServiceImpl.login(loginSignature, password);
     }
 }

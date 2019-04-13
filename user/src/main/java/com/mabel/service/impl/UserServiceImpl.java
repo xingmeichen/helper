@@ -5,6 +5,7 @@ import com.mabel.pojo.dto.UserDTO;
 import com.mabel.pojo.form.user.LoginForm;
 import com.mabel.pojo.model.HelperError;
 import com.mabel.pojo.model.user.User;
+import com.mabel.pojo.vo.ResponseEntity;
 import com.mabel.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -40,6 +41,8 @@ public class UserServiceImpl implements UserService {
         }
         User user = new User();
         BeanUtils.copyProperties(loginForm, user);
+        String encryptPassword = LoginForm.encryptPassword(loginForm.getPassword());
+        user.setPassword(encryptPassword);
         Integer userId = userDao.addUser(user);
         if (null == userId || Integer.valueOf(0).equals(userId)) {
             return HelperError.SYSTEM_ERROR.getCode();
@@ -48,14 +51,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String login(String loginSignature, String password) {
+    public ResponseEntity login(String loginSignature, String password) {
         User user = userDao.queryBySignature(loginSignature);
         if (null == user.getId()) {
-            return HelperError.SIGNATURE_PASSWORD_ERROE.getName();
+            return ResponseEntity.fail(HelperError.SIGNATURE_PASSWORD_ERROE.getCode());
         }
         if (!LoginForm.checkPassword(password, user.getPassword())) {
-            return HelperError.SIGNATURE_PASSWORD_ERROE.getName();
+            return ResponseEntity.fail(HelperError.SIGNATURE_PASSWORD_ERROE.getCode());
         }
-        return LoginForm.generateToken(user.getId());
+        return ResponseEntity.success(LoginForm.generateToken(user.getId()));
     }
 }

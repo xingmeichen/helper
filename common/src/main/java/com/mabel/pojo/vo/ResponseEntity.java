@@ -29,6 +29,12 @@ public class ResponseEntity {
         return responseEntity;
     }
 
+    public static ResponseEntity success(Object data) {
+        ResponseEntity responseEntity = success();
+        responseEntity.setData(data);
+        return responseEntity;
+    }
+
     public static ResponseEntity fail() {
         ResponseEntity responseEntity = new ResponseEntity();
         responseEntity.setMessage("系统错误").setErrorCode(-1).setSuccess(false);
