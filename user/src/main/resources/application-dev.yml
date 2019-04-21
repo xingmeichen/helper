@@ -16,8 +16,8 @@ eureka:
       defaultZone: http://localhost:8080/eureka/
 
 ribbon:
-  Connectiontimeout: 60000
-  Readtimeout: 60000
+  ConnectionTimeout: 60000
+  ReadTimeout: 60000
   eureka:
     enabled: true
 

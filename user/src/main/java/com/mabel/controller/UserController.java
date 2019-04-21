@@ -34,6 +34,7 @@ public class UserController {
             responseEntity = ResponseEntity.fail(result);
             return responseEntity;
         }
+        responseEntity.setData(result);
         return responseEntity;
     }
 

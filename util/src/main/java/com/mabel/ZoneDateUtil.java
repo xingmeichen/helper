@@ -67,12 +67,7 @@ public class ZoneDateUtil {
     }
 
     public static void main(String[] args) {
-        ZonedDateTime zonedDateTime = generateFirstDayByWeekCycle(201852, ZoneDateUtil.ASIA_SHANGHAI_ZONEID, 7);
-        ZonedDateTime zonedDateTime1 = generateLastDayByWeekCycle(201852, ZoneDateUtil.ASIA_SHANGHAI_ZONEID, 7);
-        long millisecondsSinceEpoch = 1446959825213L;
-        Instant instant = Instant.ofEpochMilli (millisecondsSinceEpoch);
-        ZonedDateTime zdt = ZonedDateTime.ofInstant ( instant , ZoneId.of(ZoneDateUtil.ASIA_SHANGHAI_ZONEID) );
-        ZonedDateTime firstOfWeek = zdt.with ( ChronoField.DAY_OF_WEEK , 1 ); // ISO 8601, Monday is first day of week.
-        ZonedDateTime firstOfNextWeek = firstOfWeek.plusWeeks ( 1 );
+        ZonedDateTime zonedDateTime = generateFirstDayByWeekCycle(201901, ZoneDateUtil.ASIA_SHANGHAI_ZONEID, 1);
+        ZonedDateTime zonedDateTime1 = generateLastDayByWeekCycle(201852, ZoneDateUtil.ASIA_SHANGHAI_ZONEID, 1);
     }
 }

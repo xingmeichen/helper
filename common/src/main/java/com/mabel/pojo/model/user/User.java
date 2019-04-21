@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -24,4 +25,7 @@ public class User {
     private String email;
     private String phone;
     private String idCode;
+    private Date createTime;
+    private Date updateTime;
+    private Date latestLoginTime;
 }
