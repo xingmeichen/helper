@@ -3,6 +3,7 @@ package com.mabel;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 
 /**
@@ -37,6 +38,11 @@ public class ZoneDateUtil {
         return ZonedDateTime.ofInstant(date.toInstant(), ZoneId.of(zoneId));
     }
 
+    public static Date convertToDate(ZonedDateTime zonedDateTime) {
+        LocalDateTime localDateTime = zonedDateTime.toLocalDateTime();
+        return Date.from(localDateTime.toInstant(zonedDateTime.getOffset()));
+    }
+
     public static String formateDateWithZone(Date date, String zoneId) {
         ZonedDateTime zonedDateTime = convertDate(date, zoneId);
         return zonedDateTime.format(DateTimeFormatter.ofPattern(DATE_TIME_FORMATTER));
@@ -64,10 +70,5 @@ public class ZoneDateUtil {
         LocalDate localDate = lastDayOfWeek.toLocalDate();
         LocalDateTime localDateTime = LocalDateTime.of(localDate, LocalTime.MAX);
         return ZonedDateTime.of(localDateTime, ZoneId.of(zoneId));
-    }
-
-    public static void main(String[] args) {
-        ZonedDateTime zonedDateTime = generateFirstDayByWeekCycle(201901, ZoneDateUtil.ASIA_SHANGHAI_ZONEID, 1);
-        ZonedDateTime zonedDateTime1 = generateLastDayByWeekCycle(201852, ZoneDateUtil.ASIA_SHANGHAI_ZONEID, 1);
     }
 }
