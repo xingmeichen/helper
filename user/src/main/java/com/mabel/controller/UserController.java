@@ -51,4 +51,10 @@ public class UserController {
         }
         return ResponseEntity.fail();
     }
+
+    @PutMapping("v1/users/logout")
+    public ResponseEntity logout(@RequestParam String loginSignature) {
+        // TODO 
+        return null;
+    }
 }
