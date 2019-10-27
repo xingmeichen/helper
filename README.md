@@ -1,6 +1,4 @@
-I still have no idea what this project will look like.
-Now, I just to write some util
-
+Manage Your Time, Enjoy Your Life, To Be Yourself
 
 // Problems during the development
 1、 to sovle the gateway timeout problem ---> the detail is that when to update database,
