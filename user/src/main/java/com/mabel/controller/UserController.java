@@ -71,9 +71,9 @@ public class UserController {
     @GetMapping("v1/users/test")
     public ResponseEntity test() {
         String teacherTask = teacherService.task();
-        LOGGER.info("teacher task is {}", teacherTask);
+        LOGGER.info("[teacher's task is {}]", teacherTask);
         String studentTask = student.task();
-        LOGGER.info("student task is {}", studentTask);
+        LOGGER.info("[student's task is {}]", studentTask);
         return ResponseEntity.success();
     }
 }
