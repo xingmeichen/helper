@@ -73,6 +73,8 @@ public class HelperFilter extends ZuulFilter {
             return true;
         } else if (requestURI.endsWith("/login")) {
             return true;
+        } else if (requestURI.endsWith("/test")) {
+            return true;
         }
         return false;
     }
