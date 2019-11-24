@@ -3,16 +3,26 @@ package com.mabel.controller;
 import com.mabel.pojo.dto.UserDTO;
 import com.mabel.pojo.form.user.LoginForm;
 import com.mabel.pojo.vo.ResponseEntity;
+import com.mabel.service.PersonService;
 import com.mabel.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+
+    @Autowired
+    @Qualifier("teacher")
+    private PersonService teacherService;
+
+    @Autowired
+    @Qualifier("student")
+    private PersonService student;
 
     @Autowired
     private UserService userServiceImpl;
@@ -64,4 +74,12 @@ public class UserController {
         return ResponseEntity.success();
     }
 
+    @GetMapping("v1/users/test-more-than-one-implement")
+    public ResponseEntity testMoreThanOneImplement() {
+        String teacherTask = teacherService.task();
+        LOGGER.info("[teacher's task is {}]", teacherTask);
+        String studentTask = student.task();
+        LOGGER.info("[student's task is {}]", studentTask);
+        return ResponseEntity.success();
+    }
 }
