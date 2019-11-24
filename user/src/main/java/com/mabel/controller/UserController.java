@@ -57,4 +57,11 @@ public class UserController {
         // TODO 
         return null;
     }
+
+    @GetMapping("v1/users/test")
+    public ResponseEntity test(@RequestParam String loginSignature) {
+        LOGGER.info("to test: ");
+        return ResponseEntity.success();
+    }
+
 }
