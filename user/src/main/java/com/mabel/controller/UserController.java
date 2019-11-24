@@ -69,7 +69,13 @@ public class UserController {
     }
 
     @GetMapping("v1/users/test")
-    public ResponseEntity test() {
+    public ResponseEntity test(@RequestParam String loginSignature) {
+        LOGGER.info("to test: ");
+        return ResponseEntity.success();
+    }
+
+    @GetMapping("v1/users/test-more-than-one-implement")
+    public ResponseEntity testMoreThanOneImplement() {
         String teacherTask = teacherService.task();
         LOGGER.info("[teacher's task is {}]", teacherTask);
         String studentTask = student.task();
