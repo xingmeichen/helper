@@ -8,7 +8,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8080/eureka/
+      defaultZone: http://localhost:8010/eureka/
 
 #swagger:
 #  base-package: com.mabel.controller
@@ -24,7 +24,7 @@ zuul:
   routes:
     registry:
       path: /registry/**
-      url: http://localhost:8080
+      url: http://localhost:8010
     user:
       path: /user/**
       serviceId: user  # serviceId 也可以用url代替

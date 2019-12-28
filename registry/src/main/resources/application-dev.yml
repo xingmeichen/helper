@@ -8,7 +8,7 @@ spring:
     name: registry
 
 server:
-  port: 8080
+  port: 8010
 
 eureka:
   enableSelfPreservation: false
