@@ -5,7 +5,7 @@ spring:
 server:
   port: 8020
 
-eureka:
+eureka:application-dev.yml
   client:
     serviceUrl:
       defaultZone: http://registry-dev:8010/eureka/, http://registry-dev-peer1:8011/eureka/, http://registry-dev-peer2:8012/eureka/

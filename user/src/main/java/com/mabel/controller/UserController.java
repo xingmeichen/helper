@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -69,7 +70,13 @@ public class UserController {
     }
 
     @GetMapping("v1/users/test")
-    public ResponseEntity test() {
+    public ResponseEntity test(@RequestParam String loginSignature) {
+        LOGGER.info("to test: ");
+        return ResponseEntity.success();
+    }
+
+    @GetMapping("v1/users/test-more-than-one-implement")
+    public ResponseEntity testMoreThanOneImplement() {
         String teacherTask = teacherService.task();
         LOGGER.info("[teacher's task is {}]", teacherTask);
         String studentTask = student.task();
