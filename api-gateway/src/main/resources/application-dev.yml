@@ -3,12 +3,12 @@ spring:
     name: api-gateway
 
 server:
-  port: 8081
+  port: 8020
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8080/eureka/
+      defaultZone: http://registry-dev:8010/eureka/, http://registry-dev-peer1:8011/eureka/, http://registry-dev-peer2:8012/eureka/
 
 #swagger:
 #  base-package: com.mabel.controller
@@ -24,7 +24,7 @@ zuul:
   routes:
     registry:
       path: /registry/**
-      url: http://localhost:8080
+      url: http://localhost:8010
     user:
       path: /user/**
       serviceId: user  # serviceId 也可以用url代替

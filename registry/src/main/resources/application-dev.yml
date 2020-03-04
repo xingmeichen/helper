@@ -8,10 +8,12 @@ spring:
     name: registry
 
 server:
-  port: 8080
+  port: 8010
 
 eureka:
   enableSelfPreservation: false
+  instance:
+    hostname: registry-dev
 
   client:
     register-with-eureka: false
@@ -19,7 +21,10 @@ eureka:
     server:
       waitTimeInMsWhenSyncEmpty: 0
     serviceUrl:
-      defaultZone: http://localhost:${server.port}/eureka/
+      # 配置多节点的注册中心，注意这里必须使用属性配置的主机名 eureka,而不能用localhost, 且需要配置host,
+      defaultZone: http://registry-dev-peer1:8011/eureka/, http://registry-dev-peer2:8012/eureka/
+      #defaultZone: http://localhost:${server.port}/eureka/
+
 
 ribbon:
   ConnectionTimeout: 60000

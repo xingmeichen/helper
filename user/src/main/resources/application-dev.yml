@@ -8,12 +8,12 @@ spring:
     name: user
 
 server:
-  port: 8082
+  port: 8040
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8080/eureka/
+      defaultZone: http://registry-dev:8010/eureka/, http://registry-dev-peer1:8011/eureka/, http://registry-dev-peer2:8012/eureka/
 
 ribbon:
   ConnectionTimeout: 60000
