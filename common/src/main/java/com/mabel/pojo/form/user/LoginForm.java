@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.google.common.collect.Maps;
 import com.sun.istack.internal.NotNull;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -19,8 +20,7 @@ import java.util.Map;
  * @author: Mabel.Chen
  * @create: 2019-04-05 15:51
  **/
-@Getter
-@Setter
+@Data
 @Accessors(chain = true)
 public class LoginForm {
 

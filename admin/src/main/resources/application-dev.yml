@@ -13,16 +13,14 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://registry-dev:8010/eureka/, http://registry-dev-peer1:8011/eureka/, http://registry-dev-peer2:8012/eureka/
+      ##defaultZone: http://registry-dev:8010/eureka/, http://registry-dev-peer1:8011/eureka/, http://registry-dev-peer2:8012/eureka/
+      defaultZone: http://registry-dev:8010/eureka/
 
 ribbon:
-  ConnectionTimeout: 60000
-  ReadTimeout: 60000
+  ConnectionTimeout: 6000
+  ReadTimeout: 6000
   eureka:
     enabled: true
-#ribbon:
-#  eureka:
-#    enabled: true
 
 mybatis:
   configLcation: classpath:mybatis.xml

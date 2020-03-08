@@ -1,6 +1,7 @@
 package com.mabel.pojo.vo;
 
 import com.mabel.pojo.model.HelperError;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -13,8 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author: Mabel.Chen
  * @create: 2019-03-31 10:11
  **/
-@Getter
-@Setter
+@Data
 @Accessors(chain = true)
 public class ResponseEntity {
 

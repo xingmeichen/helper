@@ -1,5 +1,6 @@
 package com.mabel.pojo.dto;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -10,8 +11,7 @@ import lombok.experimental.Accessors;
  * @author: Mabel.Chen
  * @create: 2019-04-13 10:46
  **/
-@Getter
-@Setter
+@Data
 @Accessors(chain = true)
 public class UserDTO {
 

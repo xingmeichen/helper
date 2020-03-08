@@ -2,7 +2,10 @@ package com.mabel.service;
 
 import com.mabel.pojo.dto.UserDTO;
 import com.mabel.pojo.form.user.LoginForm;
+import com.mabel.pojo.model.user.User;
 import com.mabel.pojo.vo.ResponseEntity;
+
+import java.util.List;
 
 public interface UserService {
 
@@ -16,4 +19,6 @@ public interface UserService {
     ResponseEntity login(String loginSignature, String password);
 
     boolean updatePassword(LoginForm loginForm);
+
+    List<User> listUser();
 }

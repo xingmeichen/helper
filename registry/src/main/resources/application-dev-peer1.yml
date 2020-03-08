@@ -24,7 +24,7 @@ eureka:
       defaultZone: http://registry-dev:8010/eureka/, http://registry-dev-peer2:8012/eureka/
 
 ribbon:
-  ConnectionTimeout: 60000
-  ReadTimeout: 60000
+  ConnectionTimeout: 6000
+  ReadTimeout: 6000
   eureka:
     enabled: true

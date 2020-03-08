@@ -8,10 +8,14 @@ import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @project: helper
  * @description:
+ * 这一层是只对数据库进行操作，不做任何的业务处理
+ * 增加这一层旨在规范数据库操作，一旦有发生数据表设计的改动不需要全局查询有哪些类需要做更改，
+ * 而只需要关注对应的DAO层就够了
  * @author: Mabel.Chen
  * @create: 2019-04-05 16:44
  **/
@@ -55,5 +59,10 @@ public class UserDao {
         User user = new User();
         user.setId(userId).setPassword(encryptPassword);
         return userMapper.updateByPrimaryKeySelective(user) > 0;
+    }
+
+    public List<User> listAllEffectiveUser() {
+        List<User> users = userMapper.selectAll();
+        return users.stream().filter(item -> 0 == item.getDisabled()).collect(Collectors.toList());
     }
 }

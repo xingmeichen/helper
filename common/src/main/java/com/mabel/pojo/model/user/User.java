@@ -1,5 +1,6 @@
 package com.mabel.pojo.model.user;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -10,8 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
-@Getter
-@Setter
+@Data
 @Accessors(chain = true)
 @Table(name = "user")
 public class User {
@@ -28,4 +28,5 @@ public class User {
     private Date createTime;
     private Date updateTime;
     private Date latestLoginTime;
+    private Integer disabled;
 }

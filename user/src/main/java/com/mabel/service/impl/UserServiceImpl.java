@@ -6,13 +6,13 @@ import com.mabel.pojo.form.user.LoginForm;
 import com.mabel.pojo.model.HelperError;
 import com.mabel.pojo.model.user.User;
 import com.mabel.pojo.vo.ResponseEntity;
-import com.mabel.service.PersonService;
 import com.mabel.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @project: helper
@@ -72,5 +72,10 @@ public class UserServiceImpl implements UserService {
         }
         String encryptPassword = LoginForm.encryptPassword(loginForm.getPassword());
         return userDao.updatePasswordById(user.getId(), encryptPassword);
+    }
+
+    @Override
+    public List<User> listUser() {
+        return userDao.listAllEffectiveUser();
     }
 }
