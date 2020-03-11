@@ -3,13 +3,11 @@ package com.mabel.pojo.form.user;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.google.common.collect.Maps;
-import com.sun.istack.internal.NotNull;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
+import javax.validation.constraints.NotNull;
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.Map;

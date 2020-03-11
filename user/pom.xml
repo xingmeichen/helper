@@ -31,11 +31,6 @@
 			<artifactId>feign-client</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/tk.mybatis/mapper -->
 		<dependency>
 			<groupId>tk.mybatis</groupId>

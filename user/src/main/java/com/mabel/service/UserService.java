@@ -21,4 +21,6 @@ public interface UserService {
     boolean updatePassword(LoginForm loginForm);
 
     List<User> listUser();
+
+    User queryUserById(Integer userId);
 }

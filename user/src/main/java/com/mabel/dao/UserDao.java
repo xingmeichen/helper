@@ -8,6 +8,7 @@ import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -64,5 +65,16 @@ public class UserDao {
     public List<User> listAllEffectiveUser() {
         List<User> users = userMapper.selectAll();
         return users.stream().filter(item -> 0 == item.getDisabled()).collect(Collectors.toList());
+    }
+
+    public User queryUserById(Integer userId) {
+        User user = userMapper.selectByPrimaryKey(userId);
+        /**
+         * 如果查询到了已经删除的用户，则返回null
+         * */
+        if (null != user && !Objects.equals(0, user.getDisabled())) {
+            return null;
+        }
+        return user;
     }
 }

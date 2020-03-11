@@ -78,4 +78,9 @@ public class UserServiceImpl implements UserService {
     public List<User> listUser() {
         return userDao.listAllEffectiveUser();
     }
+
+    @Override
+    public User queryUserById(Integer userId) {
+        return userDao.queryUserById(userId);
+    }
 }
