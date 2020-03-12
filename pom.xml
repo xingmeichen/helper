@@ -13,6 +13,7 @@
         <module>user</module>
         <module>util</module>
         <module>feign-client</module>
+        <module>config</module>
     </modules>
     <packaging>pom</packaging>
 

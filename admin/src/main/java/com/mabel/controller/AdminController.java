@@ -22,8 +22,8 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @GetMapping("/v1/admins/test")
-    public ResponseEntity test() {
+    @GetMapping("/v1/admins/users")
+    public ResponseEntity listAllUser() {
         return ResponseEntity.success(adminService.listAllUser());
     }
 }

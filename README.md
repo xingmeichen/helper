@@ -1,5 +1,7 @@
 # My purpose -> Manage Your Time, Enjoy Your Life, To Be Yourself
 
+## Relative Notes On Shimo web site https://shimo.im/docs/6K3wgcyGhTK9YKDj
+
 ## Problems during the development
 ### To solve the gateway timeout problem
 The detail of ther problem is that when I try to update database, it will always timeout but query request works well.

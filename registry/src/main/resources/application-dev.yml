@@ -25,7 +25,6 @@ eureka:
       defaultZone: http://registry-dev-peer1:8011/eureka/, http://registry-dev-peer2:8012/eureka/
       #defaultZone: http://localhost:${server.port}/eureka/
 
-
 ribbon:
   ConnectionTimeout: 6000
   ReadTimeout: 6000

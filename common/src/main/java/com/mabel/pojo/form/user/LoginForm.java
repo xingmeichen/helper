@@ -53,11 +53,6 @@ public class LoginForm {
     }
 
     public static void main(String[] args) {
-//        String s1 = "Mabel123456";
-//        String s2 = new String("Mabel f7r979 fojfoe && 23728 ^%#*%*");
-//        String encryptPassword = encryptPassword(s1);
-//        System.out.println(encryptPassword);
-//        System.out.println(checkPassword(s2, encryptPassword));
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9" +
                 ".eyJsb2dpblRpbWUiOjE1NTUxMzM1NDcsImlzcyI6ImNvbS5tYWJlbC5IZWxwZXIuU2VjcmV0IiwidXNlcklkIjoxfQ" +
                 ".s1qgE-Knp6IrVkvvog9hbgTI280N54_K6-Fa_7XIP0o";

@@ -10,34 +10,52 @@ eureka:
     serviceUrl:
       defaultZone: http://registry-dev:8010/eureka/, http://registry-dev-peer1:8011/eureka/, http://registry-dev-peer2:8012/eureka/
 
-#swagger:
-#  base-package: com.mabel.controller
-
-#zuul:
-#  routes:
-#    user:
-#      url: http://localhost:8081
+## 对于 zuul 中的 routes的配置（路由配置），path 和 url 或者 path 和serviceId是成对出现的，
+## 建议使用 path 和 serviceId （该配置称为面向服务的路由） 而不是 path 和 url，从而可以不需要配置具体的url,因为url一旦变动就需要人工维护
+## 相对来说面向服务的路由配置更为友好
+## 需要注意的是，用path与url的映射关系来配置路由规则，对于路由转发的请求不会采用HystrixCommand来包装，所有这类路由请求没有线程隔离和断路器的保护，并且也没有负载均衡的能力
+## 面向服务路由的配置是需要服务治理组件的服务发现机制（在该项目中使用的是Eureka）的支持的，
+## 而Spring cloud zuul通过与Spring cloud Eureka的整合使之得以实现
+## 对于面向服务的路由配置， 除了使用path与serviceId映射的配置方式之外，还有 一 种更简洁的配置方式:
+## zuul.routes.<serviceid>=<path>, 其中<serviceid> 用来指定路由的具体服务名，<path>用来配置匹配的请求表达式。
+## 下面的配置就是简洁配置方式
 
 zuul:
   set-content-length: true
-#  ignoredServices: "*"   # 表示允许所有请求直接转发，不需要通过任何验证
   routes:
     registry:
       path: /registry/**
-      url: http://localhost:8010
     user:
       path: /user/**
-      serviceId: user  # serviceId 也可以用url代替
     admin:
       path: /admin/**
-      serviceId: admin
-
   max:
     host:
       connection: 200
       socket-timeout-millis: 6000
       connect-timeout-millis: 6000
 
+## 下面是另外一种zuul路由的配置方式
+#zuul:
+#  set-content-length: true
+#  routes:
+#    registry:
+#      path: /registry/**
+#      serviceId: registry
+#    user:
+#      path: /user/**
+#      serviceId: user  # serviceId 也可以用url代替 如 url: http://localhost:8040
+#    admin:
+#      path: /admin/**
+#      serviceId: admin
+#  max:
+#    host:
+#      connection: 200
+#      socket-timeout-millis: 6000
+#      connect-timeout-millis: 6000
+
+## ribbon.ConnectTimeout: 路由转发请求时，创建请求连接的超时时间
+## ribbon.ReadTimeout: 路由转发请求时，请求处理的超时时间
 ribbon:
   ConnectionTimeout: 6000
   ReadTimeout: 6000
@@ -48,10 +66,14 @@ ribbon:
 #  eureka:
 #    enabled: true
 
+## hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds
+## 该配置表示断路器的超时时间，也就是过了这个时间之后，如果请求依然无法响应，则启动断路机制对该请求进行处理，具体处理策略要看Hystrix的配置策略是什么，
+## 需要注意的是：断路器的超时时间必须大于Ribbon的超时时间，否则不会触发重试，因为如果在那之前hystrix已经直接熔断，重试机制就没法触发了
+## 有时候要求这个超时时间要大于ribbon.ConnectTimeout 和 ribbon.ReadTimeout之和，有时候又不需要，搞不懂 //TODO
 hystrix:
   command:
     default:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 15000
+            timeoutInMilliseconds: 7000
