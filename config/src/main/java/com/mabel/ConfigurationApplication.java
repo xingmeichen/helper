@@ -15,7 +15,7 @@ import org.springframework.cloud.config.server.EnableConfigServer;
  **/
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 @EnableConfigServer
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
 public class ConfigurationApplication {
 
     public static void main(String[] args) {

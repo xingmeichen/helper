@@ -29,6 +29,8 @@ zuul:
       path: /user/**
     admin:
       path: /admin/**
+    config:
+      path: /config/**
   max:
     host:
       connection: 200

@@ -10,7 +10,9 @@ spring:
           username: xingmeichen
           password: ${password}
           label: master
-## 这个 searchPaths 路径还不知道怎么配置
+      discovery:
+        enabled: true
+
 server:
   port: 8050
 
