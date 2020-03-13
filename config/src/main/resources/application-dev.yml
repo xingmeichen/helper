@@ -6,9 +6,20 @@ spring:
       server:
         git:
           uri: https://github.com/xingmeichen/helper
-          searchPaths: spring_cloud_in_action/config-repo
+          searchPaths: spring-cloud-in-action/config-repository
           username: xingmeichen
-          password: 
-
+          password: ${password}
+## 这个 searchPaths 路径还不知道怎么配置
 server:
   port: 8050
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://registry-dev:8010/eureka/, http://registry-dev-peer1:8011/eureka/, http://registry-dev-peer2:8012/eureka/
+
+ribbon:
+  ConnectionTimeout: 6000
+  ReadTimeout: 6000
+  eureka:
+    enabled: true

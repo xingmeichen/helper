@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/xingmeichen/helper
+          searchPaths: /config/application-dev.yml
+          username: xingmeichen
+          password: ${password}
