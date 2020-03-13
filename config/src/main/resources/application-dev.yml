@@ -9,6 +9,7 @@ spring:
           searchPaths: spring-cloud-in-action/config-repository
           username: xingmeichen
           password: ${password}
+          label: master
 ## 这个 searchPaths 路径还不知道怎么配置
 server:
   port: 8050
