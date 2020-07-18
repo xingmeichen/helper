@@ -14,3 +14,7 @@ Actually, I just make a mistake of spelling, set read timeout for ribbon works w
 
 ### Hystrix and ribbon timeout setting
 The Hystrix timeout of 60000ms for the command user is set lower than the combination of the Ribbon read and connect timeout, 122000ms.
+
+
+## TODO
+1. integrate logback
