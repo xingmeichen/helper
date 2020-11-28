@@ -12,4 +12,8 @@ public class StudentServiceImpl implements PersonService {
     public String task() {
         return "Learn";
     }
+
+    public static void main(String[] args) {
+        System.out.println("");
+    }
 }
