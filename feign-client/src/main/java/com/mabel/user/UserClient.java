@@ -13,7 +13,7 @@ import java.util.List;
  * @author: Mabel.Chen
  * @create: 2020-03-08 18:53
  **/
-@FeignClient("user")
+@FeignClient(value = "user") // fallback
 public interface UserClient {
 
     @GetMapping("/feign/v1/users")

@@ -9,7 +9,7 @@
 
 ## Problems during the development
 ### To solve the gateway timeout problem
-The detail of ther problem is that when I try to update database, it will always timeout but query request works well.
+The detail of the problem is that when I try to update database, it will always timeout but query request works well.
 Actually, I just make a mistake of spelling, set read timeout for ribbon works well. So, this problem has been resolved now.
 
 ### Hystrix and ribbon timeout setting
@@ -18,3 +18,6 @@ The Hystrix timeout of 60000ms for the command user is set lower than the combin
 
 ## TODO
 1. integrate logback
+2. 了解滑动时间窗口计数实现
+3. spring-cloud-alibaba (注册中心：Nacos，服务降级机制：Sentinel)
+4. 注册表的并发冲突问题
