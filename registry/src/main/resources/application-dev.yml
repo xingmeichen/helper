@@ -30,3 +30,7 @@ ribbon:
   ReadTimeout: 6000
   eureka:
     enabled: true
+
+management:
+  security:
+    enable: false

@@ -15,6 +15,13 @@ Actually, I just make a mistake of spelling, set read timeout for ribbon works w
 ### Hystrix and ribbon timeout setting
 The Hystrix timeout of 60000ms for the command user is set lower than the combination of the Ribbon read and connect timeout, 122000ms.
 
+## Swagger
+1. UI url: http://ip:port/swagger-ui.html
+
+## Spring Security
+1. import dependency in parent pom file, spring-boot-starter-security, 
+   then access every module will need to login first.
+2. 
 
 ## TODO
 1. integrate logback

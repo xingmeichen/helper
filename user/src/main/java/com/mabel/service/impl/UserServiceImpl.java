@@ -56,10 +56,10 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity login(String loginSignature, String password) {
         User user = userDao.queryBySignature(loginSignature);
         if (null == user.getId()) {
-            return ResponseEntity.fail(HelperError.SIGNATURE_PASSWORD_ERROE.getCode());
+            return ResponseEntity.fail(HelperError.SIGNATURE_PASSWORD_ERROR.getCode());
         }
         if (!LoginForm.checkPassword(password, user.getPassword())) {
-            return ResponseEntity.fail(HelperError.SIGNATURE_PASSWORD_ERROE.getCode());
+            return ResponseEntity.fail(HelperError.SIGNATURE_PASSWORD_ERROR.getCode());
         }
         return ResponseEntity.success(LoginForm.generateToken(user.getId()));
     }
