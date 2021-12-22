@@ -1,5 +1,6 @@
 package com.mabel.service.impl;
 
+import com.mabel.constant.Constant;
 import com.mabel.dao.UserDao;
 import com.mabel.pojo.dto.UserDTO;
 import com.mabel.pojo.form.user.LoginForm;
@@ -10,9 +11,11 @@ import com.mabel.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @project: helper
@@ -25,6 +28,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @Override
     public UserDTO queryUserByUserName(String userName) {
@@ -61,7 +67,11 @@ public class UserServiceImpl implements UserService {
         if (!LoginForm.checkPassword(password, user.getPassword())) {
             return ResponseEntity.fail(HelperError.SIGNATURE_PASSWORD_ERROR.getCode());
         }
-        return ResponseEntity.success(LoginForm.generateToken(user.getId()));
+        String token = LoginForm.generateToken(user.getId());
+        // 设置登录有效期
+        redisTemplate.opsForValue().set("login:" + user.getId(), user.getId(), Constant.ONE_DAY_SECONDS, TimeUnit.SECONDS);
+        System.out.println("LoginKey is: " + redisTemplate.opsForValue().get("login:" + user.getId()));
+        return ResponseEntity.success(token);
     }
 
     @Override
