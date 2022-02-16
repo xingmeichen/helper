@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService {
         }
         String token = LoginForm.generateToken(user.getId());
         // 设置登录有效期
-        redisTemplate.opsForValue().set("login:" + user.getId(), user.getId(), Constant.ONE_DAY_SECONDS, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set("login:" + String.valueOf(user.getId()), String.valueOf(user.getId()), Constant.ONE_DAY_SECONDS, TimeUnit.SECONDS);
         System.out.println("LoginKey is: " + redisTemplate.opsForValue().get("login:" + user.getId()));
         return ResponseEntity.success(token);
     }
