@@ -15,7 +15,7 @@ public enum  HelperError {
 
     SYSTEM_ERROR(-1, "系统错误"),
     DUPLICATE_USER_NAME_ERROR(-2, "用户名重复"),
-    SIGNATURE_PASSWORD_ERROE(-3, "用户名或密码错误");
+    SIGNATURE_PASSWORD_ERROR(-3, "用户名或密码错误");
 
     private Integer code;
     private String name;

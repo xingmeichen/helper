@@ -1,5 +1,6 @@
 package com.mabel.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mabel.pojo.dto.UserDTO;
 import com.mabel.pojo.form.user.LoginForm;
 import com.mabel.pojo.vo.ResponseEntity;
@@ -9,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -81,6 +81,7 @@ public class UserController {
         LOGGER.info("[teacher's task is {}]", teacherTask);
         String studentTask = student.task();
         LOGGER.info("[student's task is {}]", studentTask);
+        ObjectMapper mapper;
         return ResponseEntity.success();
     }
 }

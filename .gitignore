@@ -31,3 +31,5 @@ hs_err_pid*
 *.ipr
 */target
 
+*/.gradle
+${USER_HOME}/

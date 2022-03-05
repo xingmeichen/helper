@@ -3,7 +3,6 @@ package com.mabel;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
-import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 
 /**
@@ -43,7 +42,7 @@ public class ZoneDateUtil {
         return Date.from(localDateTime.toInstant(zonedDateTime.getOffset()));
     }
 
-    public static String formateDateWithZone(Date date, String zoneId) {
+    public static String formatDateWithZone(Date date, String zoneId) {
         ZonedDateTime zonedDateTime = convertDate(date, zoneId);
         return zonedDateTime.format(DateTimeFormatter.ofPattern(DATE_TIME_FORMATTER));
     }
@@ -70,5 +69,15 @@ public class ZoneDateUtil {
         LocalDate localDate = lastDayOfWeek.toLocalDate();
         LocalDateTime localDateTime = LocalDateTime.of(localDate, LocalTime.MAX);
         return ZonedDateTime.of(localDateTime, ZoneId.of(zoneId));
+    }
+
+    /**
+     * 求两个时间之前的间隔天数，
+     * from 到 to 间隔了多少天，其结果为 to - from,
+     * 同样的方式可以获取两个时间的时间差，该时间差的单位可以通过 Duration自带的方法转换，
+     * 这些方法可以转换成的时间单位包括天，小时，分钟，毫秒，纳秒
+     * */
+    public static long intervalDays(ZonedDateTime from, ZonedDateTime to) {
+        return Duration.between(from, to).toDays();
     }
 }

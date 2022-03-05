@@ -8,7 +8,9 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://registry-dev:8010/eureka/, http://registry-dev-peer1:8011/eureka/, http://registry-dev-peer2:8012/eureka/
+#      defaultZone: http://registry-dev:8010/eureka/, http://registry-dev-peer1:8011/eureka/, http://registry-dev-peer2:8012/eureka/
+#      defaultZone: http://registry-dev:8010/eureka/
+       defaultZone: http://localhost:8010/eureka/
 
 ## 对于 zuul 中的 routes的配置（路由配置），path 和 url 或者 path 和serviceId是成对出现的，
 ## 建议使用 path 和 serviceId （该配置称为面向服务的路由） 而不是 path 和 url，从而可以不需要配置具体的url,因为url一旦变动就需要人工维护
@@ -78,4 +80,4 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 7000
+            timeoutInMilliseconds: 15000

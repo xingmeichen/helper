@@ -56,5 +56,8 @@ public class LoginForm {
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9" +
                 ".eyJsb2dpblRpbWUiOjE1NTUxMzM1NDcsImlzcyI6ImNvbS5tYWJlbC5IZWxwZXIuU2VjcmV0IiwidXNlcklkIjoxfQ" +
                 ".s1qgE-Knp6IrVkvvog9hbgTI280N54_K6-Fa_7XIP0o";
+
+        String encryptPassword = encryptPassword("abc567yz");
+        System.out.println(encryptPassword);
     }
 }

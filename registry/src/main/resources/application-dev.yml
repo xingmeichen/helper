@@ -22,11 +22,15 @@ eureka:
       waitTimeInMsWhenSyncEmpty: 0
     serviceUrl:
       # 配置多节点的注册中心，注意这里必须使用属性配置的主机名 eureka,而不能用localhost, 且需要配置host,
-      defaultZone: http://registry-dev-peer1:8011/eureka/, http://registry-dev-peer2:8012/eureka/
-      #defaultZone: http://localhost:${server.port}/eureka/
+      # defaultZone: http://registry-dev-peer1:8011/eureka/, http://registry-dev-peer2:8012/eureka/
+      defaultZone: http://localhost:${server.port}/eureka/
 
 ribbon:
   ConnectionTimeout: 6000
   ReadTimeout: 6000
   eureka:
     enabled: true
+
+management:
+  security:
+    enable: false
