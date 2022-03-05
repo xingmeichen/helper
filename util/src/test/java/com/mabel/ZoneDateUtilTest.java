@@ -8,8 +8,6 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-import static org.junit.Assert.*;
-
 public class ZoneDateUtilTest {
 
     @Test
@@ -34,7 +32,7 @@ public class ZoneDateUtilTest {
 
     @Test
     public void formateDateWithZoneTest() {
-        String s = ZoneDateUtil.formateDateWithZone(new Date(), ZoneDateUtil.ASIA_SHANGHAI_ZONEID);
+        String s = ZoneDateUtil.formatDateWithZone(new Date(), ZoneDateUtil.ASIA_SHANGHAI_ZONEID);
         System.out.println(s);
     }
 }

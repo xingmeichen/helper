@@ -3,7 +3,6 @@ package com.mabel;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
-import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 
 /**
@@ -43,7 +42,7 @@ public class ZoneDateUtil {
         return Date.from(localDateTime.toInstant(zonedDateTime.getOffset()));
     }
 
-    public static String formateDateWithZone(Date date, String zoneId) {
+    public static String formatDateWithZone(Date date, String zoneId) {
         ZonedDateTime zonedDateTime = convertDate(date, zoneId);
         return zonedDateTime.format(DateTimeFormatter.ofPattern(DATE_TIME_FORMATTER));
     }

@@ -16,7 +16,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  * @project: helper
- * @description:
+ * @description: 配置RedisTemplate, 处理序列化问题
  * @author: Mabel.Chen
  * @create: 2021-12-22 21:00
  **/

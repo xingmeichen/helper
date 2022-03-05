@@ -1,0 +1,14 @@
+## this config is not stable right now, need to be changed
+## https://docs.docker.com/compose/compose-file/
+version: "3.8"
+services:
+  registry:
+    image: mabelchen/helper-registr:dev
+    ports:
+      - "8010:8010"
+  api-gateway:
+    image: mabelchen/helper-api-gateway:dev
+    ports:
+      - "8020:8020"
+    environment:
+      - registry
