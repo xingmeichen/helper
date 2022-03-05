@@ -23,6 +23,7 @@ public class RestExceptionHandler {
 
     /***
      * 拦截捕捉异常 {@link javax.validation.ConstraintViolationException}
+     * @ExceptionHandler 配置的 value的值，表示该方法拦截的对应的异常类型
      */
     @ResponseBody
     @ExceptionHandler(value = ConstraintViolationException.class)
