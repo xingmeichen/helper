@@ -1,6 +1,6 @@
 package com.mabel;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -31,7 +31,7 @@ public class ZoneDateUtilTest {
     }
 
     @Test
-    public void formateDateWithZoneTest() {
+    public void formatDateWithZoneTest() {
         String s = ZoneDateUtil.formatDateWithZone(new Date(), ZoneDateUtil.ASIA_SHANGHAI_ZONEID);
         System.out.println(s);
     }
