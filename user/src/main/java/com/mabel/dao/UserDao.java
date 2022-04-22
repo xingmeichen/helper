@@ -4,6 +4,7 @@ import com.mabel.mapper.UserMapper;
 import com.mabel.pojo.model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
 
@@ -36,6 +37,7 @@ public class UserDao {
         return users.get(0);
     }
 
+    @Transactional
     public Integer addUser(User user) {
         if (null == user) {
             return 0;

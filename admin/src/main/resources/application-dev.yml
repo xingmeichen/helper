@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/helper
-    username: root
-    password: 20190228
+    username: helper_admin
+    password: 20220419
     driver-class-name: com.mysql.jdbc.Driver
   application:
     name: admin
