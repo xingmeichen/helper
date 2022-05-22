@@ -1,7 +1,7 @@
 package com.mabel.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mabel.pojo.dto.UserDTO;
+import com.mabel.pojo.dto.user.UserDTO;
 import com.mabel.pojo.form.user.LoginForm;
 import com.mabel.pojo.vo.ResponseEntity;
 import com.mabel.service.PersonService;

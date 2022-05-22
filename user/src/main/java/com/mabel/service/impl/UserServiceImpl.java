@@ -1,8 +1,11 @@
 package com.mabel.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.mabel.constant.Constant;
 import com.mabel.dao.UserDao;
-import com.mabel.pojo.dto.UserDTO;
+import com.mabel.pojo.dto.user.UserDTO;
+import com.mabel.pojo.dto.user.UserQueryDTO;
 import com.mabel.pojo.form.user.LoginForm;
 import com.mabel.pojo.model.HelperError;
 import com.mabel.pojo.model.user.User;
@@ -92,5 +95,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User queryUserById(Integer userId) {
         return userDao.queryUserById(userId);
+    }
+
+    @Override
+    public PageInfo<User> listUser(UserQueryDTO queryDTO) {
+        return PageHelper.startPage(queryDTO.getPageNumber(), queryDTO.getPageSize())
+                .doSelectPageInfo(() -> userDao.listAllEffectiveUser());
     }
 }

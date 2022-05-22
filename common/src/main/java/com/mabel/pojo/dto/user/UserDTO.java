@@ -1,4 +1,4 @@
-package com.mabel.pojo.dto;
+package com.mabel.pojo.dto.user;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
